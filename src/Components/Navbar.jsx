@@ -70,8 +70,11 @@ const Navbar = () => {
     };
 
     return (
-        <header className="p-4 dark:bg-gray-100 dark:text-gray-800">
-            <div className="container items-center flex justify-between h-16 mx-auto">
+
+        // dark:bg-gray-100 dark:text-gray-800
+
+        <header className="p-4  bg-slate-300">
+            <div className="container items-center w-[90%] mx-auto flex justify-between h-16 ">
                 <a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2">
                     <img className="w-10 h-10 rounded-lg" src={logo} alt="Logo" />
                 </a>
