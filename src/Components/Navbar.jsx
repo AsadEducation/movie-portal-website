@@ -44,7 +44,7 @@ const Navbar = () => {
         </li>
         <li className="flex">
             <NavLink
-                to="/change"
+                to="/allMovies"
                 className={({ isActive }) =>
                     `flex items-center px-4 -mb-1 border-b-2 ${isActive ? 'text-violet-600 border-violet-600' : 'border-transparent'
                     }`

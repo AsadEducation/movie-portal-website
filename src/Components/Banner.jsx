@@ -1,8 +1,8 @@
 
-import zero from '../assets/8852084.jpg'
-import one from '../assets/one.png'
-import three from '../assets/three.jpg'
 
+import gang from '../assets/gangstar.png'
+import panther from '../assets/panther.jpg'
+import tomb from '../assets/tomb (1).jpg'
 
 
 const Banner = () => {
@@ -11,7 +11,7 @@ const Banner = () => {
          <div className="carousel w-full h-full ">
             <div id="slide1" className="carousel-item relative w-full">
                 <img
-                    src={zero}
+                    src={gang}
                     className="w-full h-full object-cover rounded-2xl " />
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide4" className="btn btn-circle">❮</a>
@@ -20,7 +20,7 @@ const Banner = () => {
             </div>
             <div id="slide2" className="carousel-item relative w-full">
                 <img
-                    src={one}
+                    src={panther}
                     className="w-full h-full object-cover rounded-2xl" />
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide1" className="btn btn-circle">❮</a>
@@ -29,7 +29,7 @@ const Banner = () => {
             </div>
             <div id="slide3" className="carousel-item relative w-full">
                 <img
-                    src={three}
+                    src={tomb}
                     className="w-full h-full object-cover rounded-2xl" />
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide2" className="btn btn-circle">❮</a>
