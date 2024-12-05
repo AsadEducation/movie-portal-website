@@ -1,24 +1,22 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+import { RouterProvider } from 'react-router-dom'
+import Routes from './Routes/Routes.jsx'
+import AuthProvider, { AuthContext } from './Provider/AuthProvider.jsx'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element:<App></App>
-  },
-]);
+//  this can cause problem 
+// import 'leaflet/dist/leaflet.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+
+    <AuthProvider>
+      <RouterProvider router={Routes} />
+    </AuthProvider>
+
+    <ToastContainer />
   </StrictMode>,
 )
