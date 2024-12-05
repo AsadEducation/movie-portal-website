@@ -4,6 +4,7 @@ import Home from '../Layout/Home'
 import ErrorPage from '../Routes/ErrorPage'
 import AddMovies from "../Pages/AddMovies";
 import AllMovies from "../Pages/AllMovies";
+import Theaters from "../Pages/Theaters";
 
 
 const Routes = createBrowserRouter([
@@ -25,6 +26,11 @@ const Routes = createBrowserRouter([
     {
         path:'allMovies',
         element:<AllMovies/>
+    },
+    {
+        path:'theaters',
+        element:<Theaters/>
+
     },
     {
         path: "*",
