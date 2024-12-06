@@ -1,5 +1,11 @@
+import { Link, useNavigate } from "react-router-dom";
+
 const MovieCard = ({ movie }) => {
-    const { movie_poster, movie_title, genre, duration, release_year, rating, details_button } = movie;
+    const { movie_poster, movie_title, genre, duration, release_year, rating, details_button, _id } = movie;
+
+
+    const navigate = useNavigate();
+
 
     return (
         <div className="relative max-w-[450px] rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 dark:text-gray-200">
@@ -28,9 +34,9 @@ const MovieCard = ({ movie }) => {
                 <p className="text-sm text-gray-600 dark:text-gray-400">{genre} | {duration}</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Release Year: {release_year}</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Rating: {rating}</p>
-                <button className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-violet-600 rounded-lg hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50">
+                <Link to={`/movieDetails/${_id}`}><button className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-violet-600 rounded-lg hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50">
                     {details_button}
-                </button>
+                </button></Link>
             </div>
         </div>
     );

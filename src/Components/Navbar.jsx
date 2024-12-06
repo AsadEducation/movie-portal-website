@@ -12,7 +12,7 @@ const Navbar = () => {
 
     const { user, logoutUser } = useContext(AuthContext);
 
-    console.log(user);
+    // console.log(user);
 
 
     const links = <>
@@ -76,21 +76,21 @@ const Navbar = () => {
     const showProfile = <>
 
         {
-            user?.photoURL && <div className='flex group flex-row-reverse items-center gap-2'>
-                <img className="w-10 h-10 rounded-full " src={user?.photoURL} alt="IMG" />
+            user?.photoURL ? (<div className='lg:flex flex-row-reverse  group  items-center gap-2'>
+                <img className="w-10 h-10 mx-auto lg:mx-0 rounded-full " src={user?.photoURL} alt="IMG" />
                 <p className='font-semibold  opacity-0 group-hover:opacity-100 transition-opacity duration-300'>{user?.displayName}</p>
 
-            </div>
-                
-        // (
-        // <CgProfile className='text-3xl mr-4 dark:text-violet-600' />
-        // )
+            </div>)
+                :
+                (
+                    <CgProfile className='text-3xl mr-4 dark:text-violet-600' />
+                )
 
         }
 
         {user ? (
 
-            <button onClick={() => logoutUser()} className="self-center px-8 py-2 rounded dark:bg-violet-600 dark:text-gray-50">
+            <button onClick={() => logoutUser()} className="self-center px-8 py-2 ml-4 rounded dark:bg-violet-600 dark:text-gray-50">
                 Logout
             </button>
 

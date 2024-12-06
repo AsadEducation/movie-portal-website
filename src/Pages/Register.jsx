@@ -8,7 +8,7 @@ import { rule } from "postcss";
 
 const Register = () => {
 
-    const { createNewUser, loginWithGoogle } = useContext(AuthContext);
+    const { createNewUser, loginWithGoogle , setUser , profileUpdate } = useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -45,18 +45,20 @@ const Register = () => {
                     title: "Successfully Registered",
                 });
 
-                // console.log(result.user);
+                // updating users profile 
 
-                result.user.displayName=username;
-                result.user.photoURL=photo;
-                // console.log('username , photo' ,username ,photo);
+                setUser(result.user);
+                profileUpdate({
+                    displayName: username,
+                    photoURL: photo,
+                })
 
                 navigate('/');
 
 
             })
             .catch((error) => {
-                console.log(error);
+                // console.log(error);
                 Swal.fire({
                     icon: "error",
                     title: "Sign Up failed...",

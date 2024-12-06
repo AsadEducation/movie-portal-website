@@ -23,7 +23,7 @@ const Login = () => {
         loginUser(email, password)
             .then((result) => {
 
-                console.log(result.user);
+                // console.log(result.user);
 
                 Swal.fire({
                     icon: "success",
@@ -33,7 +33,7 @@ const Login = () => {
                 navigate('/');
             })
             .catch((error) => {
-                console.log(error);
+                // console.log(error);
                 Swal.fire({
                     icon: "error",
                     title: "Sign Up failed...",

@@ -13,13 +13,13 @@ const FeaturedMovies = ({ flag }) => {
 
         useEffect(() => {
 
-            fetch('/fake-data.json')
+            fetch('http://localhost:5000/movies')
                 .then(res => res.json())
                 .then(data => setMovies(data))
 
         }, []);
 
-    console.log(movies)
+    // console.log(movies)
 
     return (
 
@@ -30,7 +30,7 @@ const FeaturedMovies = ({ flag }) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-[90%] mx-auto mt-8 lg:mt-12">
                 {
                     movies.slice(0,terminal).map((movie) => {
-                        return <MovieCard key={movie.id} movie={movie} />
+                        return <MovieCard key={movie._id} movie={movie} />
                     })
                 }
 
