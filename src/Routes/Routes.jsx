@@ -5,6 +5,9 @@ import ErrorPage from '../Routes/ErrorPage'
 import AddMovies from "../Pages/AddMovies";
 import AllMovies from "../Pages/AllMovies";
 import Theaters from "../Pages/Theaters";
+import AuthLayout from "../Layout/AuthLayout";
+import Login from "../Pages/Login";
+import Register from '../Pages/Register'
 
 
 const Routes = createBrowserRouter([
@@ -31,6 +34,20 @@ const Routes = createBrowserRouter([
         path:'theaters',
         element:<Theaters/>
 
+    },
+    {
+      path:'auth',
+      element:<AuthLayout/>,
+      children:[
+         {
+            path:'login',
+            element:<Login/>
+         },
+         {
+            path:'register',
+            element:<Register/>
+         }
+      ]
     },
     {
         path: "*",
