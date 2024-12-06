@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/Movie-logo.webp';
+import { AuthContext } from '../Provider/AuthProvider';
+import { FaPersonFalling } from 'react-icons/fa6';
+import { CgProfile } from 'react-icons/cg';
 
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     // dark:text-violet-600 dark:border-violet-600
+
+    const { user, logoutUser } = useContext(AuthContext);
+
+    console.log(user);
 
 
     const links = <>
@@ -65,9 +72,42 @@ const Navbar = () => {
             </NavLink>
         </li>
     </>
+
+    const showProfile = <>
+
+        {
+            user?.photoURL && <div className='flex group flex-row-reverse items-center gap-2'>
+                <img className="w-10 h-10 rounded-full " src={user?.photoURL} alt="IMG" />
+                <p className='font-semibold  opacity-0 group-hover:opacity-100 transition-opacity duration-300'>{user?.displayName}</p>
+
+            </div>
+                
+        // (
+        // <CgProfile className='text-3xl mr-4 dark:text-violet-600' />
+        // )
+
+        }
+
+        {user ? (
+
+            <button onClick={() => logoutUser()} className="self-center px-8 py-2 rounded dark:bg-violet-600 dark:text-gray-50">
+                Logout
+            </button>
+
+        ) : (
+            <Link to={`/auth/login`}>
+                <button className="self-center px-8 py-2 rounded dark:bg-violet-600 dark:text-gray-50">
+                    Login
+                </button>
+            </Link>
+        )}
+    </>
+
+
     const toggleDropdown = () => {
         setIsDropdownOpen((prev) => !prev);
     };
+
 
     return (
 
@@ -82,8 +122,10 @@ const Navbar = () => {
                     {links}
                 </ul>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-                    <Link to={`/auth/login`}><button className="self-center px-8 py-3 rounded">Sign in</button></Link>
-                    <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-600 dark:text-gray-50">Sign up</button>
+                    {/* showing login and register button based on user  */}
+
+                    {showProfile}
+
                 </div>
                 <button
                     onClick={toggleDropdown}
@@ -101,6 +143,7 @@ const Navbar = () => {
                 <div className="lg:hidden mt-2 bg-white rounded-md shadow-md dark:bg-gray-200">
                     <ul className="flex flex-col space-y-2">
                         {links}
+                        {showProfile}
                     </ul>
                 </div>
             )}

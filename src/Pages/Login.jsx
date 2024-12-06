@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 const Login = () => {
 
     const { loginWithGoogle, loginUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleForm = (e) => {
 
@@ -18,29 +20,31 @@ const Login = () => {
         //   const info = { email}
         //   console.log(info);
 
-        loginUser(email,password)
-        .then((result)=>{
+        loginUser(email, password)
+            .then((result) => {
 
-            console.log(result.user);
+                console.log(result.user);
 
-            Swal.fire({
-                icon: "success",
-                title: "Successfully Logged In",
-            });
-        })
-        .catch((error)=>{
-            console.log(error);
-            Swal.fire({
-                icon: "error",
-                title: "Sign Up failed...",
-                text: `${error.message}`,
-            });
-        })
+                Swal.fire({
+                    icon: "success",
+                    title: "Successfully Logged In",
+                });
+
+                navigate('/');
+            })
+            .catch((error) => {
+                console.log(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Sign Up failed...",
+                    text: `${error.message}`,
+                });
+            })
 
     }
 
 
-    //registering a new user with google auth
+    //logging in a new user with google auth
 
     const handleGoogle = () => {
         loginWithGoogle()
@@ -49,6 +53,9 @@ const Login = () => {
                     icon: "success",
                     title: "Successfully Logged In",
                 });
+
+                navigate('/');
+
             })
             .catch((error) => {
 

@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { rule } from "postcss";
 // import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Register = () => {
 
     const { createNewUser, loginWithGoogle } = useContext(AuthContext);
-    // const [eye, setEye] = useState(false);
+    const navigate = useNavigate();
 
 
     const handleForm = (e) => {
@@ -30,16 +31,29 @@ const Register = () => {
         }
 
         //   const info = { username,email,photo}
+        
 
         //registering a new user with email and password
 
         createNewUser(email, password)
             .then(result => {
 
+               
+
                 Swal.fire({
                     icon: "success",
                     title: "Successfully Registered",
                 });
+
+                // console.log(result.user);
+
+                result.user.displayName=username;
+                result.user.photoURL=photo;
+                // console.log('username , photo' ,username ,photo);
+
+                navigate('/');
+
+
             })
             .catch((error) => {
                 console.log(error);
@@ -60,10 +74,16 @@ const Register = () => {
     const handleGoogle = () => {
         loginWithGoogle()
             .then((result) => {
+
                 Swal.fire({
                     icon: "success",
                     title: "Successfully Registered",
                 });
+
+                //navigating to home page
+
+                navigate('/');
+
             })
             .catch((error) => {
 
