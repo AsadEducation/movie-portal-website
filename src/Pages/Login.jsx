@@ -1,14 +1,23 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 
 const Login = () => {
 
-    const { loginWithGoogle, loginUser } = useContext(AuthContext);
+    const { loginWithGoogle, loginUser,user } = useContext(AuthContext);
+ 
 
     const navigate = useNavigate();
+
+    const {state} = useLocation();
+    let  desiredLocation = '/';
+
+    if(state){
+        desiredLocation= state;
+    }
+
 
     const handleForm = (e) => {
 
@@ -30,7 +39,7 @@ const Login = () => {
                     title: "Successfully Logged In",
                 });
 
-                navigate('/');
+                navigate(desiredLocation);
             })
             .catch((error) => {
                 // console.log(error);
@@ -54,7 +63,7 @@ const Login = () => {
                     title: "Successfully Logged In",
                 });
 
-                navigate('/');
+                navigate(desiredLocation);
 
             })
             .catch((error) => {

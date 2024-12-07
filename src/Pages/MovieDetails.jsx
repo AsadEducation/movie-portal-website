@@ -1,12 +1,93 @@
 import axios from "axios";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import { useLoaderData, useLocation } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { CgTrash } from "react-icons/cg";
+import { MdFavoriteBorder } from "react-icons/md";
+import { useContext, useState } from "react";
+import { MovieContext } from "../Provider/MovieProvider";
+import Swal from "sweetalert2";
 
 const MovieDetails = () => {
 
 
-    const { movie_poster, movie_title, genre, duration, release_year, rating, details_button, _id, story } = useLoaderData();
+    const { movies, setMovies } = useContext(MovieContext);
+
+    const movieInfo = useLoaderData();
+
+    const { movie_poster, movie_title, genre, duration, release_year, rating, details_button, _id, story } = movieInfo;
+
+
+    const { favDisabled, setFavDisabled } = useContext(MovieContext);
+
+    const navigate = useNavigate();
+
+
+
+
+    const handleDelete = () => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/movies/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount) {
+
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+
+                            const remained = movies.filter((movie) => movie._id != _id);
+
+                            setMovies(remained);
+
+                            navigate('/allMovies');
+
+                        }
+
+                    })
+            }
+        });
+
+    }
+
+    const handleFavorite = () => {
+
+        setFavDisabled(true);
+
+        fetch('http://localhost:5000/favMovies', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(movieInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Added To Favorite Collection",
+                        text: "please visit favorite movies",
+                        icon: "success"
+                    });
+                }
+            })
+
+    }
 
 
 
@@ -60,12 +141,15 @@ const MovieDetails = () => {
                                     <p className="text-gray-300 max-w-2xl">{story}</p>
 
                                     <div className="flex gap-4">
-                                        <button className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition">
-                                            Watch Now
+                                        <button onClick={handleDelete} className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition">
+                                            <CgTrash className="text-2xl" />
                                         </button>
-                                        <button className="px-6 py-3 border border-gray-500 text-gray-300 font-semibold rounded-lg hover:bg-gray-800 transition">
-                                            More Info →
-                                        </button>
+
+                                        {
+                                            !favDisabled && <button onClick={handleFavorite} className="px-6 py-3 border border-gray-500 text-gray-300 font-semibold rounded-lg hover:bg-gray-800 transition">
+                                                <MdFavoriteBorder className="text-2xl" />
+                                            </button>
+                                        }
                                     </div>
                                 </div>
                             </div>

@@ -4,9 +4,6 @@ const MovieCard = ({ movie }) => {
     const { movie_poster, movie_title, genre, duration, release_year, rating, details_button, _id } = movie;
 
 
-    const navigate = useNavigate();
-
-
     return (
         <div className="relative max-w-[450px] rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 dark:text-gray-200">
             {/* Movie Poster with Video Icon */}

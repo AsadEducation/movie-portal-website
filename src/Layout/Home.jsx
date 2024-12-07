@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Banner from "../Components/Banner";
 import FeaturedMovies from "../Components/FeaturedMovies";
 import Navbar from "../Components/Navbar";
@@ -6,6 +6,8 @@ import Footer from "../Components/Footer";
 
 
 const Home = () => {
+
+
     return (
         <div className="bg-slate-300">
 

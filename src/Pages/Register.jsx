@@ -11,6 +11,13 @@ const Register = () => {
     const { createNewUser, loginWithGoogle , setUser , profileUpdate } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const {state} = useLocation();
+    let  desiredLocation = '/';
+
+    if(state){
+        desiredLocation= state;
+    }
+
 
     const handleForm = (e) => {
         e.preventDefault();
@@ -53,7 +60,7 @@ const Register = () => {
                     photoURL: photo,
                 })
 
-                navigate('/');
+                navigate(desiredLocation);
 
 
             })
@@ -84,7 +91,7 @@ const Register = () => {
 
                 //navigating to home page
 
-                navigate('/');
+                navigate(desiredLocation);
 
             })
             .catch((error) => {

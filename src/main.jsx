@@ -6,6 +6,7 @@ import Routes from './Routes/Routes.jsx'
 import AuthProvider, { AuthContext } from './Provider/AuthProvider.jsx'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MovieProvider from './Provider/MovieProvider.jsx'
 
 //  this can cause problem 
 // import 'leaflet/dist/leaflet.css';
@@ -14,7 +15,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
 
     <AuthProvider>
-      <RouterProvider router={Routes} />
+      <MovieProvider>
+        <RouterProvider router={Routes} />
+      </MovieProvider>
     </AuthProvider>
 
     <ToastContainer />

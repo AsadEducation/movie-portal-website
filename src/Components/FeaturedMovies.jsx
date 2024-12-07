@@ -1,23 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
+import { MovieContext } from "../Provider/MovieProvider";
 
 
-const FeaturedMovies = ({ flag }) => {
+const FeaturedMovies = ({flag}) => {
 
-    const [movies, setMovies] = useState([]);
+
+    const {movies, setMovies} = useContext(MovieContext);
+
+    // console.log(movies);
+
 
     let terminal = movies.length;
 
-    if (flag)terminal=6;
+    if (flag) terminal = 6;
 
-        useEffect(() => {
 
-            fetch('http://localhost:5000/movies')
-                .then(res => res.json())
-                .then(data => setMovies(data))
-
-        }, []);
 
     // console.log(movies)
 
@@ -29,7 +28,7 @@ const FeaturedMovies = ({ flag }) => {
             }
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-[90%] mx-auto mt-8 lg:mt-12">
                 {
-                    movies.slice(0,terminal).map((movie) => {
+                    movies.slice(0, terminal).map((movie) => {
                         return <MovieCard key={movie._id} movie={movie} />
                     })
                 }
