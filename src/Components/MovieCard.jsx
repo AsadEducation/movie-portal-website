@@ -9,9 +9,9 @@ const MovieCard = ({ movie, favFlag }) => {
 
     const { movie_poster, movie_title, genre, duration, release_year, rating, details_button, _id } = movie;
 
-    const { movies, setMovies } = useContext(MovieContext);
+    const { fMovies,setFMovies } = useContext(MovieContext);
     const { user, setUser } = useContext(AuthContext);
-    const email = user.email;
+
 
 
     const handleDelete = () => {
@@ -36,15 +36,18 @@ const MovieCard = ({ movie, favFlag }) => {
                         // console.log(data);
 
                         if (data.deletedCount) {
+
+                            const remained = fMovies.filter((fMovie)=>fMovie._id!=_id);
+
+                            setFMovies(remained);
+
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            // const remained = movies.filter((movie)=>movie._id!=_id);
 
-                            const remained = movies.filter
-
+                           
                             
                         }
                     })

@@ -2,8 +2,11 @@ import { createContext, useState, useEffect } from "react";
 
 export const MovieContext = createContext(); // Keep the context name as is.
 
-const MovieProvider = ({children}) => {
+const MovieProvider = ({ children }) => {
     const [movies, setMovies] = useState([]);
+
+    const [fMovies, setFMovies] = useState([]);
+
 
     useEffect(() => {
         fetch('http://localhost:5000/movies')
@@ -14,11 +17,15 @@ const MovieProvider = ({children}) => {
             });
     }, []);
 
-   
+
+
+
 
     const info = {
         movies,
         setMovies,
+        fMovies,
+        setFMovies,
     };
 
 
