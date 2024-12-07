@@ -10,6 +10,7 @@ import Login from "../Pages/Login";
 import Register from '../Pages/Register'
 import Details from "../Pages/MovieDetails";
 import Private from '../Routes/Private'
+import FavMovies from "../Pages/FavMovies";
 
 
 const Routes = createBrowserRouter([
@@ -31,6 +32,12 @@ const Routes = createBrowserRouter([
   {
     path: 'allMovies',
     element: <AllMovies />
+  },
+  {
+    path:'favMovies',
+    element:<Private><FavMovies/></Private>,
+    loader:()=>fetch('http://localhost:5000/favMovies'),
+
   },
   {
     path: 'theaters',
