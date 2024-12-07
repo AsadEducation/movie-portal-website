@@ -1,7 +1,58 @@
+import { useContext } from "react";
+import { CgTrash } from "react-icons/cg";
 import { Link, useNavigate } from "react-router-dom";
+import { MovieContext } from "../Provider/MovieProvider";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, favFlag }) => {
+
     const { movie_poster, movie_title, genre, duration, release_year, rating, details_button, _id } = movie;
+
+    const { movies, setMovies } = useContext(MovieContext);
+    const { user, setUser } = useContext(AuthContext);
+    const email = user.email;
+
+
+    const handleDelete = () => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/favMovies/${_id}`, {
+                    method: 'DELETE',
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data);
+
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            // const remained = movies.filter((movie)=>movie._id!=_id);
+
+                            const remained = movies.filter
+
+                            
+                        }
+                    })
+
+
+            }
+        });
+    }
 
 
     return (
@@ -31,9 +82,16 @@ const MovieCard = ({ movie }) => {
                 <p className="text-sm text-gray-600 dark:text-gray-400">{genre} | {duration}</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Release Year: {release_year}</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Rating: {rating}</p>
-                <Link to={`/movieDetails/${_id}`}><button className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-violet-600 rounded-lg hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50">
-                    {details_button}
-                </button></Link>
+
+                {
+                    favFlag ? (<button onClick={handleDelete}> <CgTrash className="text-3xl text-red-500" /></button>)
+                        : (<Link to={`/movieDetails/${_id}`}><button className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-violet-600 rounded-lg hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50">
+                            {details_button}
+                        </button>
+                        </Link>)
+                }
+
+
             </div>
         </div>
     );
