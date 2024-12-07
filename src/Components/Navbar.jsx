@@ -8,11 +8,12 @@ import { CgProfile } from 'react-icons/cg';
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-    // dark:text-violet-600 dark:border-violet-600
 
     const { user, logoutUser } = useContext(AuthContext);
 
     // console.log(user);
+
+    const email = user?.email;
 
 
     const links = <>
@@ -40,7 +41,7 @@ const Navbar = () => {
         </li>
         <li className="flex">
             <NavLink
-                to="/favMovies"
+                to={`/favMovies/${email}`}
                 className={({ isActive }) =>
                     `flex items-center px-4 -mb-1 border-b-2 ${isActive ? 'text-violet-600 border-violet-600' : 'border-transparent'
                     }`

@@ -34,12 +34,6 @@ const Routes = createBrowserRouter([
     element: <AllMovies />
   },
   {
-    path:'favMovies',
-    element:<Private><FavMovies/></Private>,
-    loader:()=>fetch('http://localhost:5000/favMovies'),
-
-  },
-  {
     path: 'theaters',
     element: <Theaters />
 
@@ -61,8 +55,14 @@ const Routes = createBrowserRouter([
   {
     path: '/movieDetails/:id',
     loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
-    element: <Private><Details/></Private>,
-    
+    element: <Private><Details /></Private>,
+
+  },
+  {
+    path: 'favMovies/:email',
+    element: <Private><FavMovies /></Private>,
+    loader: ({ params }) => fetch(`http://localhost:5000/favMovies/${params.email}`),
+
   },
   {
     path: "*",

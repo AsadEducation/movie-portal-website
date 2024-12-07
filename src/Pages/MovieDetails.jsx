@@ -7,18 +7,24 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { useContext, useState } from "react";
 import { MovieContext } from "../Provider/MovieProvider";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const MovieDetails = () => {
 
 
     const { movies, setMovies } = useContext(MovieContext);
+    const {user}= useContext(AuthContext);
+
+    const email = user.email;
+
+    // console.log(user);
 
     const movieInfo = useLoaderData();
 
     const { movie_poster, movie_title, genre, duration, release_year, rating, details_button, _id, story } = movieInfo;
 
+    const newMovieInfo = {...movieInfo,email};
 
-    const { favDisabled, setFavDisabled } = useContext(MovieContext);
 
     const navigate = useNavigate();
 
@@ -66,14 +72,12 @@ const MovieDetails = () => {
 
     const handleFavorite = () => {
 
-        setFavDisabled(true);
-
-        fetch('http://localhost:5000/favMovies', {
+        fetch('http://localhost:5000/favMovies/', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify(movieInfo)
+            body: JSON.stringify(newMovieInfo)
         })
             .then(res => res.json())
             .then(data => {
@@ -146,7 +150,7 @@ const MovieDetails = () => {
                                         </button>
 
                                         {
-                                            !favDisabled && <button onClick={handleFavorite} className="px-6 py-3 border border-gray-500 text-gray-300 font-semibold rounded-lg hover:bg-gray-800 transition">
+                                            <button onClick={handleFavorite} className="px-6 py-3 border border-gray-500 text-gray-300 font-semibold rounded-lg hover:bg-gray-800 transition">
                                                 <MdFavoriteBorder className="text-2xl" />
                                             </button>
                                         }

@@ -5,8 +5,6 @@ export const MovieContext = createContext(); // Keep the context name as is.
 const MovieProvider = ({children}) => {
     const [movies, setMovies] = useState([]);
 
-    const [favDisabled , setFavDisabled]= useState(false);
-
     useEffect(() => {
         fetch('http://localhost:5000/movies')
             .then(res => res.json())
@@ -21,8 +19,6 @@ const MovieProvider = ({children}) => {
     const info = {
         movies,
         setMovies,
-        favDisabled,
-        setFavDisabled
     };
 
 
