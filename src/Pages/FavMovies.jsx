@@ -12,13 +12,10 @@ const FavMovies = () => {
 
     const loaderData = useLoaderData();
 
-    console.log('loader data',loaderData);
-  
-    //passing favorite movies to movie context 
-
     setFMovies(loaderData);
     
-    console.log('setting data',fMovies);
+    
+    console.log(fMovies);
     
     
 

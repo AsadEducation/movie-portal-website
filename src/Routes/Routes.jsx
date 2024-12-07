@@ -54,14 +54,14 @@ const Routes = createBrowserRouter([
   },
   {
     path: '/movieDetails/:id',
-    loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
+    loader: ({ params }) => fetch(`https://server-side-assignment-10-mu.vercel.app/movies/${params.id}`),
     element: <Private><Details /></Private>,
 
   },
   {
     path: 'favMovies/:email',
     element: <Private><FavMovies /></Private>,
-    loader: ({ params }) => fetch(`http://localhost:5000/favMovies/${params.email}`),
+    loader: ({ params }) => fetch(`https://server-side-assignment-10-mu.vercel.app/favMovies/${params.email}`),
 
   },
   {

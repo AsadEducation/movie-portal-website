@@ -27,7 +27,7 @@ const MovieCard = ({ movie, favFlag }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/favMovies/${_id}`, {
+                fetch(`https://server-side-assignment-10-mu.vercel.app/favMovies/${_id}`, {
                     method: 'DELETE',
 
                 })
@@ -37,7 +37,7 @@ const MovieCard = ({ movie, favFlag }) => {
 
                         if (data.deletedCount) {
 
-                            const remained = fMovies.filter((fMovie)=>fMovie._id!=_id);
+                            const remained = fMovies.filter((fMovie)=>fMovie._id!==_id);
 
                             setFMovies(remained);
 

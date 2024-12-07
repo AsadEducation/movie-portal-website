@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
 
-    const { loginWithGoogle, loginUser,user } = useContext(AuthContext);
+    const { loginWithGoogle, loginUser,user,setUser } = useContext(AuthContext);
  
 
     const navigate = useNavigate();
@@ -38,6 +38,8 @@ const Login = () => {
                     icon: "success",
                     title: "Successfully Logged In",
                 });
+
+                setUser(result.user);
 
                 navigate(desiredLocation);
             })
@@ -72,7 +74,7 @@ const Login = () => {
     }
 
     return (
-        <div className="w-full max-w-md p-8 space-y-3 mx-auto mt-8 lg:mt-12 rounded-xl dark:bg-gray-50 dark:text-gray-800">
+        <div className="w-full max-w-md p-8 space-y-3 mx-auto my-8 lg:my-12 rounded-xl dark:bg-gray-50 dark:text-gray-800">
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <form onSubmit={handleForm} noValidate="" action="" className="space-y-6">
 

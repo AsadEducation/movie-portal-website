@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { rule } from "postcss";
@@ -54,11 +54,12 @@ const Register = () => {
 
                 // updating users profile 
 
-                setUser(result.user);
+                
                 profileUpdate({
                     displayName: username,
                     photoURL: photo,
                 })
+                setUser(result.user);
 
                 navigate(desiredLocation);
 
@@ -102,7 +103,7 @@ const Register = () => {
 
 
     return (
-        <div className="w-full max-w-md p-8 space-y-3 mx-auto mt-8 lg:mt-12 rounded-xl dark:bg-gray-50 dark:text-gray-800">
+        <div className="w-full max-w-md p-8 space-y-3 mx-auto my-8 lg:my-12 rounded-xl dark:bg-gray-50 dark:text-gray-800">
             <h1 className="text-2xl font-bold text-center">Register</h1>
             <form onSubmit={handleForm} noValidate="" action="" className="space-y-6">
 

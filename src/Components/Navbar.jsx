@@ -11,7 +11,7 @@ const Navbar = () => {
 
     const { user, logoutUser } = useContext(AuthContext);
 
-    // console.log(user);
+    console.log(user);
 
     const email = user?.email;
 
