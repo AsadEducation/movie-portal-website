@@ -3,6 +3,7 @@ import Banner from "../Components/Banner";
 import FeaturedMovies from "../Components/FeaturedMovies";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import FAQ from "../Components/FAQ";
 
 
 const Home = () => {
@@ -21,7 +22,7 @@ const Home = () => {
 
                 <div className="grid m-4 lg:m-8  place-items-center">
                     <Link
-                        
+
                         to={`/allMovies`}
                     >
                         <button className="px-4 py-2 text-sm font-semibold text-white bg-violet-600 rounded-lg hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50">
@@ -29,6 +30,8 @@ const Home = () => {
                         </button>
                     </Link>
                 </div>
+
+                <div className="my-12 w-[90%] mx-auto"><FAQ /></div>
 
             </main>
 
