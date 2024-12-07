@@ -4,6 +4,7 @@ import FeaturedMovies from "../Components/FeaturedMovies";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import FAQ from "../Components/FAQ";
+import BoxOffice from "../Components/BoxOffice";
 
 
 const Home = () => {
@@ -31,7 +32,11 @@ const Home = () => {
                     </Link>
                 </div>
 
+                <BoxOffice/>
+
                 <div className="my-12 w-[90%] mx-auto"><FAQ /></div>
+
+                
 
             </main>
 
