@@ -1,31 +1,80 @@
-# Eco-Adventure
+<h1 align="center">🎬 Movie Portal 🎥</h1>
 
-**Eco-Adventure** is an eco-tourism platform that helps adventure enthusiasts discover exciting outdoor experiences and book eco-friendly adventures. This platform showcases a variety of adventure packages, provides easy navigation, and promotes sustainable tourism practices.
+<p align="center">
+  A dynamic Movie Portal that allows users to explore movies, view details, add & delete movies, and manage their favorites.
+</p>
 
-## Purpose
-The purpose of **Eco-Adventure** is to promote eco-friendly travel and raise awareness about sustainable tourism. The platform allows users to explore various eco-tourism destinations and activities, book their adventures, and experience nature in a responsible way.
+<p align="center">
+  🔗 <a href="YOUR_LIVE_SITE_URL_HERE" target="_blank"><strong>Live Demo</strong></a> |
+  📂 <a href="YOUR_GITHUB_REPO_URL_HERE" target="_blank"><strong>GitHub Repository</strong></a>
+</p>
 
-## Live URL
-You can check out the live version of the project here:  
-<a href="https://movie-portal-f7a8b.web.app/" target="_blank">🌍 Live Link</a>
+---
 
-## Key Features
-- 🌲 **Explore Adventures**: Browse a variety of eco-friendly adventure packages.
-- 🗺️ **Book Activities**: Easily book your next adventure with an intuitive interface.
-- 🔐 **User Authentication**: Sign in using Google Authentication for personalized experiences.
-- 📱 **Responsive Design**: The platform works seamlessly across devices (mobile, tablet, desktop).
-- 🔄 **Real-time Updates**: Keep track of available spots and upcoming adventures in real-time.
-- ♻️ **Eco-friendly Tips**: Learn about sustainable travel practices and eco-tourism benefits.
+<h2>📸 Screenshot</h2>
 
-## NPM Packages Used
-- ⚛️ **React**: For building the user interface.
-- 🔗 **React Router DOM**: For routing and navigation within the application.
-- 🔑 **Firebase**: For user authentication (Google sign-in).
-- 📡 **Axios**: For making API calls to fetch adventure data.
-- ⏳ **Moment**: For handling dates and times in the application.
-- 🎨 **Tailwind CSS**: For utility-first CSS styling.
-- 🎛️ **DaisyUI**: For UI component library based on Tailwind CSS.
-- 📢 **React Toastify**: For displaying notifications and alerts in the UI.
+<p align="center">
+  <img src="YOUR_SCREENSHOT_URL_HERE" alt="Movie Portal Screenshot" width="80%">
+</p>
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
+
+<h2>🚀 Features</h2>
+
+<ul>
+  <li>🔒 Secure Authentication (Login, Register, Google Login)</li>
+  <li>🎥 Add, Delete, and View Movies with Detailed Information</li>
+  <li>⭐ Add Movies to Favorites & Remove from Favorites</li>
+  <li>🔍 Search Movies by Title</li>
+  <li>🎭 Genre Filtering & Sorting Based on Rating</li>
+  <li>📅 Movie Release Year & Duration Management</li>
+  <li>🌗 Light/Dark Theme Toggle</li>
+  <li>⚡ Fully Responsive for Mobile, Tablet, and Desktop</li>
+</ul>
+
+---
+
+<h2>🛠️ Technologies Used</h2>
+
+<ul>
+  <li>⚛️ React.js (Frontend)</li>
+  <li>🌐 Express.js  (Backend)</li>
+  <li>🗄️ MongoDB (Database)</li>
+  <li>🔥 Firebase Authentication</li>
+  <li>🎨 Tailwind CSS</li>
+  <li>🔍 React Router DOM</li>
+</ul>
+
+---
+
+<h2>📦 Dependencies</h2>
+
+<ul>
+  <li>react-router-dom</li>
+  <li>firebase</li>
+  <li>react-toastify</li>
+  <li>react-simple-star-rating</li>
+  <li>react-hook-form</li>
+  <li>tailwindcss</li>
+  <li>dotenv</li>
+</ul>
+
+---
+
+<h2>🌐 Live Demo</h2>
+
+<p>Check out the live version of this project:</p>
+
+
+<p align="center">
+  <a href="https://movie-portal-f7a8b.web.app" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-Click%20Here-brightgreen?style=for-the-badge" alt="Live Demo">
+  </a>
+</p>
+
+---
+
+<h2>📜 License</h2>
+
+<p>This project is open-source and available under the <strong>MIT License</strong>.</p>
+
