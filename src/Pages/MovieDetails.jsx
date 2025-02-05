@@ -42,7 +42,7 @@ const MovieDetails = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://server-side-assignment-10-mu.vercel.app/movies/${_id}`, {
+                fetch(`https://last-movie-portal.onrender.com/movies/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -71,7 +71,7 @@ const MovieDetails = () => {
 
     const handleFavorite = () => {
 
-        fetch('https://server-side-assignment-10-mu.vercel.app/favMovies/', {
+        fetch('https://last-movie-portal.onrender.com/favMovies/', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

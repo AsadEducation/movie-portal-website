@@ -9,7 +9,7 @@ const MovieProvider = ({ children }) => {
 
 
     useEffect(() => {
-        fetch('https://server-side-assignment-10-mu.vercel.app/movies')
+        fetch('https://last-movie-portal.onrender.com/movies')
             .then(res => res.json())
             .then(data => setMovies(data))
             .catch(err => {

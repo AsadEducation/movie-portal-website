@@ -27,7 +27,7 @@ const MovieCard = ({ movie, favFlag }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://server-side-assignment-10-mu.vercel.app/favMovies/${_id}`, {
+                fetch(`https://last-movie-portal.onrender.com/favMovies/${_id}`, {
                     method: 'DELETE',
 
                 })
@@ -89,7 +89,7 @@ const MovieCard = ({ movie, favFlag }) => {
                 {
                     favFlag ? (<button onClick={handleDelete}> <CgTrash className="text-3xl text-red-500" /></button>)
                         : (<Link to={`/movieDetails/${_id}`}><button className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-violet-600 rounded-lg hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-opacity-50">
-                            {details_button}
+                            {details_button || 'Details'}
                         </button>
                         </Link>)
                 }

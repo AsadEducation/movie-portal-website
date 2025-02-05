@@ -16,7 +16,7 @@ import FavMovies from "../Pages/FavMovies";
 const Routes = createBrowserRouter([
 
   {
-    path: '',
+    path: '/',
     element: <Home></Home>,
     children: [
       {
@@ -54,14 +54,14 @@ const Routes = createBrowserRouter([
   },
   {
     path: '/movieDetails/:id',
-    loader: ({ params }) => fetch(`https://server-side-assignment-10-mu.vercel.app/movies/${params.id}`),
+    loader: ({ params }) => fetch(`https://last-movie-portal.onrender.com/movies/${params.id}`),
     element: <Private><Details /></Private>,
 
   },
   {
     path: 'favMovies/:email',
     element: <Private><FavMovies /></Private>,
-    loader: ({ params }) => fetch(`https://server-side-assignment-10-mu.vercel.app/favMovies/${params.email}`),
+    loader: ({ params }) => fetch(`https://last-movie-portal.onrender.com/favMovies/${params.email}`),
 
   },
   {
