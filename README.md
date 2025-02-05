@@ -62,14 +62,6 @@
 ---
 
 
-<p align="center">
-  <a href="https://movie-portal-f7a8b.web.app" target="_blank">
-    <img src="https://img.shields.io/badge/Live_Demo-Click%20Here-brightgreen?style=for-the-badge" alt="Live Demo">
-  </a>
-</p>
-
----
-
 <h2>📜 License</h2>
 
 <p>This project is open-source and available under the <strong>MIT License</strong>.</p>
