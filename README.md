@@ -61,10 +61,6 @@
 
 ---
 
-<h2>🌐 Live Demo</h2>
-
-<p>Check out the live version of this project:</p>
-
 
 <p align="center">
   <a href="https://movie-portal-f7a8b.web.app" target="_blank">
